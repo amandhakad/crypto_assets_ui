@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 
-const CellText = ({children}: any) => (<span className="align-middle text-white">{children}</span>);
-const CellChange = ({text}: any) => (<span className={`text-xs custom-change align-middle pl-2.5 ${text.charAt(0)==="+" ? "text-positive-green" : "text-negative-red"}`}>{text}</span>);
+const CellText = ({children}: {children:any}) => (<span className="align-middle text-white">{children}</span>);
+
+const CellChange = ({text}: {text: string}) => (<span className={`text-xs custom-change align-middle pl-2.5 ${text.charAt(0)==="+" ? "text-positive-green" : "text-negative-red"}`}>{text}</span>);
+
+const CellPairItem = ({src, index}:{src:string, index: number}) => (<div className="inline-block align-middle cursor-pointer" key={index}>
+                              <img src={src} style={{marginRight: '5px', marginLeft: '5px'}} alt="Pair Item" />
+                            </div>);
+
 
 export class Cell extends Component<{style?: any, children?: any, fit?: string},{}> {
   static Text = CellText;
   static Change = CellChange;
+  static PairItem = CellPairItem;
 
   render() {
     // receiving styles so this component works flexibly with inline css
@@ -13,7 +20,6 @@ export class Cell extends Component<{style?: any, children?: any, fit?: string},
     const children = this.props.children;
 
     const fit = this.props.fit ?? "full";
-
     const widthHandle = fit==="content" ? {outer: {width: 'fit-content'}, inner: {paddingLeft: '10px', paddingRight: '10px'}} : { outer: { width: "83.333333%" }, inner: {}};
 
     return (

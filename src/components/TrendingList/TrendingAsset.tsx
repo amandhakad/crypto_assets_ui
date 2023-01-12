@@ -32,7 +32,7 @@ function TrendingAsset(props: {data: SingleAsset, meta: Meta}) {
     <div className="relative min-w-[220px] md:my-2 sm:my-4 my-8 max-w-[300px] mx-auto">
       <div className="absolute w-fit inset-x-0 mx-auto z-10 rounded-full -top-8 p-px bg-gradient-to-b from-border-grad-one to-border-grad-two">
         <div className="w-full h-full p-4 rounded-full" style={{background: `linear-gradient(to bottom, ${data.logoGrad.first}, ${data.logoGrad.second})`}}>
-          <img src={data.logo} className="text-center w-[38px]" alt={data.title} />
+          <img src={data.logo} className="text-center w-[38px] cursor-pointer" alt={data.title} />
         </div>
       </div>
       <img src={curve_helper} alt="svg" className="w-full" />
@@ -51,9 +51,7 @@ function TrendingAsset(props: {data: SingleAsset, meta: Meta}) {
           <CellCaption text="TVL" />
           <Cell fit="content">
             {data.pairs.map((src, index) => (
-              <div className="inline-block align-middle" key={index}>
-                <img src={src} style={{marginRight: '5px', marginLeft: '5px'}} alt={data.pairs[0]}/>
-              </div>
+              <Cell.PairItem src={src} index={index} />
             ))}
           </Cell>
           <CellCaption text="Popular Pairs" />
