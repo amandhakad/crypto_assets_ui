@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #14172B;
+  font-family: 'Tomorrow';
+}
+
+@font-face {
+  font-family: 'Tomorrow';
+  src: local('Tomorrow'), url(./../fonts/Tomorrow-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Tomorrow';
+    font-weight: 600;
+    src: local('Tomorrow'), url(./../fonts/Tomorrow-SemiBold.ttf) format('truetype');
+}
+
+.custom-bg {
+  background: linear-gradient(180deg, #1c1e34 0%, #181a30 100%); backdrop-filter: blur(50px);
+}
